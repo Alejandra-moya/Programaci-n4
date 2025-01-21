@@ -1,0 +1,52 @@
+#include <iostream>//Libreria estandar
+using namespace std;
+
+// Función para rellenar una matriz
+void llenarMatriz(float matriz[4][4], const string& nombre) {
+    cout << "Por favor, ingrese los elementos de la matriz " << nombre << " (4x4):" << endl;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            cout << nombre << "[" << i << "][" << j << "]: ";
+            cin >> matriz[i][j];
+        }
+    }
+}
+
+// Función para sumar dos matrices y almacenar el resultado en una tercera matriz
+void sumarMatrices(float A[4][4], float B[4][4], float C[4][4]) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            C[i][j] = A[i][j] + B[i][j];
+        }
+    }
+}
+
+// Función para mostrar una matriz
+void mostrarMatriz(float matriz[4][4], const string& nombre) {
+    cout << "\nMatriz " << nombre << ":" << endl;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            cout << matriz[i][j] << "\t";
+        }
+        cout << endl;
+    }
+}
+
+// Función principal
+int main() {
+    float A[4][4], B[4][4], C[4][4]; // Declarar tres matrices: A, B y C
+    cout << "\nMatrices" << endl;
+    // Llenar matrices A y B con valores del usuario
+    llenarMatriz(A, "A");
+    llenarMatriz(B, "B");
+
+    // Sumar matrices A y B, almacenar el resultado en C
+    sumarMatrices(A, B, C);
+
+    // Mostrar las matrices
+    mostrarMatriz(A, "A");
+    mostrarMatriz(B, "B");
+    mostrarMatriz(C, "C (A + B)");
+
+    return 0;
+}
