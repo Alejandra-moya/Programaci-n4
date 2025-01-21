@@ -1,0 +1,68 @@
+#include <iostream> //Libreria estandar
+#include <cmath> // Para pow y sqrt
+using namespace std;
+
+int main() {
+    int m, n, k;
+    cout << "\nMatrices\n";
+    // Entrada de dimensiones y escalar
+    cout << "Introduce el numero de filas (m): "<< endl;
+    cin >> m;
+    cout << "Introduce el numero de columnas (n): "<< endl;
+    cin >> n;
+    cout << "Introduce el valor del escalar k: "<< endl;
+    cin >> k;
+
+    int A[100][100], B[100][100];
+    double C[100][100];
+
+    // Entrada del arreglo A
+    cout << "Introduce los elementos del arreglo A:" << endl;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << "A[" << i << "][" << j << "]: ";
+            cin >> A[i][j];
+        }
+    }
+
+    // Procesar los arreglos B y C
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            B[i][j] = A[i][j] * k; // Multiplicación por escalar
+            if (B[i][j] % 2 == 0) { // Si es par, elevar al cuadrado
+                C[i][j] = pow(B[i][j], 2);
+            } else { // Si es impar, calcular raíz cuadrada
+                C[i][j] = sqrt(B[i][j]);
+            }
+        }
+    }
+
+    // Mostrar el arreglo A
+    cout << "\nArreglo A (Original):" << endl;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << A[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    // Mostrar el arreglo B
+    cout << "\nArreglo B (Multiplicado por " << k << "):" << endl;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << B[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    // Mostrar el arreglo C
+    cout << "\nArreglo C (Procesado):" << endl;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << C[i][j] << "\t";
+        }
+        cout << endl;
+    }
+   cout << "\nGracias queridos usuarios." << endl;
+    return 0;
+}
