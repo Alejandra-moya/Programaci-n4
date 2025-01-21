@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "\nMATRICES "<< endl;
+    // Solicitar el tamaño de la matriz
+    cout << "Introduce el tamaño de la matriz cuadrada (n): "<< endl;
+    cin >> n;
+
+    // Verificar que el tamaño sea válido
+    if (n <= 0) {
+        cout << "El tamaño de la matriz debe ser un numero entero positivo." << endl;
+        return 1;
+    }
+
+    int matriz[100][100];
+    int mayor; // Variable para almacenar el número mayor
+
+    // Ingresar los elementos de la matriz
+    cout << "Introduce los elementos de la matriz:" << endl;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << "Elemento [" << i << "][" << j << "]: ";
+            cin >> matriz[i][j];
+        }
+    }
+
+    // Buscar el número mayor en la matriz
+    mayor = matriz[0][0]; // Inicializar con el primer elemento de la matriz
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (matriz[i][j] > mayor) {
+                mayor = matriz[i][j];
+            }
+        }
+    }
+
+    // Mostrar la matriz ingresada
+    cout << "\nMatriz ingresada:" << endl;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << matriz[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    // Mostrar el número mayor encontrado
+    cout << "\nEl numero mayor en la matriz es: " << mayor << endl;
+
+    // Generar y mostrar la tabla de multiplicar del número mayor
+    cout << "\nTabla de multiplicar de " << mayor << ":" << endl;
+    for (int i = 1; i <= 12; i++) {
+        cout << mayor << " x " << i << " = " << mayor * i << endl;
+    }
+
+    return 0;
+}
+
