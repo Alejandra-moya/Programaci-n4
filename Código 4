@@ -1,0 +1,93 @@
+  #include <iostream>
+#include <cmath> // Para pow
+using namespace std;
+
+// Prototipos de funciones
+void llenarMatrizPar(int matriz[][100], int n, const string& nombre);
+void calcularCuboMatriz(int matrizA[][100], int matrizC[][100], int n);
+void modificarUltimaFila(int matrizB[][100], int n);
+void mostrarMatriz(int matriz[][100], int n, const string& nombre);
+
+int main() {
+    int n;
+    cout << "\nMATRICES "<< endl;
+    // Solicitar el tamaño de las matrices
+    cout << "Introduce el tamaño de las matrices cuadradas (n): ";
+    cin >> n;
+
+    // Validar que n sea positivo
+    if (n <= 0) {
+        cout << "La medida de las matrices debe ser un numero entero positivo." << endl;
+        return 1; // Salir si el tamaño es inválido
+    }
+
+    // Declaración de las matrices
+    int matrizA[100][100], matrizB[100][100], matrizC[100][100];
+
+    // Llenar las dos matrices con números pares
+    cout << "Llenando la matriz A:" << endl;
+    llenarMatrizPar(matrizA, n, "A");
+    cout << "\nLlenando la matriz B:" << endl;
+    llenarMatrizPar(matrizB, n, "B");
+
+    // Calcular la matriz C (cubo de los elementos de matriz A)
+    calcularCuboMatriz(matrizA, matrizC, n);
+
+    // Modificar la última fila de matriz B (multiplicar por 2)
+    modificarUltimaFila(matrizB, n);
+
+    // Mostrar las matrices
+    cout << "\nMatriz A (Original):" << endl;
+    mostrarMatriz(matrizA, n, "A");
+    cout << "\nMatriz B (Original, ultima fila multiplicada por 2):" << endl;
+    mostrarMatriz(matrizB, n, "B");
+    cout << "\nMatriz C (Cubo de los elementos de la matriz A):" << endl;
+    mostrarMatriz(matrizC, n, "C");
+
+    return 0; // Indica que el programa terminó correcCtamente
+}
+
+// Función para llenar una matriz con números pares
+void llenarMatrizPar(int matriz[][100], int n, const string& nombre) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            bool esPar = false;
+            while (!esPar) {
+                cout << "Introduce un numero par para " << nombre << "[" << i << "][" << j << "]: ";
+                cin >> matriz[i][j];
+                if (matriz[i][j] % 2 == 0) {
+                    esPar = true;
+                } else {
+                    cout << "El numero ingresado no es par. Ingresa de nuevo." << endl;
+                }
+            }
+        }
+    }
+}
+
+// Función para calcular la matriz C como el cubo de los elementos de la matriz A
+void calcularCuboMatriz(int matrizA[][100], int matrizC[][100], int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            matrizC[i][j] = pow(matrizA[i][j], 3); // Calcular el cubo
+        }
+    }
+}
+
+// Función para modificar la última fila de la matriz B multiplicando por 2
+void modificarUltimaFila(int matrizB[][100], int n) {
+    for (int j = 0; j < n; j++) {
+        matrizB[n - 1][j] *= 2; // Multiplicar cada elemento de la última fila por 2
+    }
+}
+
+// Función para mostrar una matriz
+void mostrarMatriz(int matriz[][100], int n, const string& nombre) {
+    cout << "Matriz " << nombre << ":" << endl;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << matriz[i][j] << "\t"; // Imprimir cada elemento con tabulación
+        }
+        cout << endl; // Salto de línea al final de cada filaS
+    }
+}
